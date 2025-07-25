@@ -7,5 +7,5 @@ menu "Example configuration"
             (all pins are grouned), which is the default, and ends at  `0x1F`.
             See mcp9808.h for all possible values.
 
-    rsource "../../../../devtools/Kconfig.i2c"
+    rsource "../../../Kconfig.i2c"
 endmenu
