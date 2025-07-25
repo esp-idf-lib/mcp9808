@@ -26,4 +26,4 @@ issues: https://github.com/esp-idf-lib/mcp9808/issues
 discussion: https://github.com/esp-idf-lib/core/discussions
 files:
   exclude:
-    - docs
+    - docs/**/*
