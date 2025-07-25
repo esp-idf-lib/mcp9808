@@ -11,7 +11,7 @@ Driver for MCP9808 digital temperature sensor.
 ## Installation
 
 ```sh
-idf.py add-dependency "esp-idf-lib/mcp9808^1.0.0
+idf.py add-dependency esp-idf-lib/mcp9808^1.0.0
 ```
 
 ## Support
