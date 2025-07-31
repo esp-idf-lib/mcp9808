@@ -58,7 +58,8 @@ extern "C" {
 /**
  * Device mode
  */
-typedef enum {
+typedef enum
+{
     MCP9808_CONTINUOUS = 0, //!< Continuous measurement mode, default
     MCP9808_SHUTDOWN        //!< Shutdown mode
 } mcp9808_mode_t;
@@ -66,7 +67,8 @@ typedef enum {
 /**
  * T upper and T lower hysteresis
  */
-typedef enum {
+typedef enum
+{
     MCP9808_HYST_0 = 0, //!< 0.0 deg.C, default
     MCP9808_HYST_1_5,   //!< 1.5 deg.C
     MCP9808_HYST_3,     //!< 3.0 deg.C
@@ -76,7 +78,8 @@ typedef enum {
 /**
  * Alert output mode
  */
-typedef enum {
+typedef enum
+{
     MCP9808_ALERT_DISABLED = 0, //!< Alert output disabled, default
     MCP9808_ALERT_COMPARATOR,   //!< Alert output in comparator mode
     MCP9808_ALERT_INTERRUPT     //!< Alert output in interrupt mode
@@ -85,7 +88,8 @@ typedef enum {
 /**
  * Alert output select
  */
-typedef enum {
+typedef enum
+{
     MCP9808_ALERT_UP_LOW_CRIT = 0, //!< Alert when T > T upper or T < T lower or T > T crit, default
     MCP9808_ALERT_CRIT,            //!< Alert when T > T crit
 } mcp9808_alert_select_t;
@@ -93,7 +97,8 @@ typedef enum {
 /**
  * Alert output polarity
  */
-typedef enum {
+typedef enum
+{
     MCP9808_ALERT_LOW = 0, //!< Active-low, pull-up resistor required, default
     MCP9808_ALERT_HIGH,    //!< Active-high
 } mcp9808_alert_polarity_t;
@@ -101,7 +106,8 @@ typedef enum {
 /**
  * Temperature resolution
  */
-typedef enum {
+typedef enum
+{
     MCP9808_RES_0_5 = 0, //!< Resolution = +0.5 deg.C, conversion time = 30 ms, typical sample rate = 33 Hz
     MCP9808_RES_0_25,    //!< Resolution = +0.25 deg.C, conversion time = 65 ms, typical sample rate = 15 Hz
     MCP9808_RES_0_125,   //!< Resolution = +0.125 deg.C, conversion time = 130 ms, typical sample rate = 7 Hz
@@ -185,7 +191,7 @@ esp_err_t mcp9808_get_resolution(i2c_dev_t *dev, mcp9808_resolution_t *res);
  * @return `ESP_OK` on success
  */
 esp_err_t mcp9808_set_alert_config(i2c_dev_t *dev, mcp9808_alert_mode_t mode,
-        mcp9808_alert_select_t sel, mcp9808_alert_polarity_t polarity, mcp9808_hysteresis_t hyst);
+                                   mcp9808_alert_select_t sel, mcp9808_alert_polarity_t polarity, mcp9808_hysteresis_t hyst);
 
 /**
  * @brief Get alert configuration
@@ -198,7 +204,7 @@ esp_err_t mcp9808_set_alert_config(i2c_dev_t *dev, mcp9808_alert_mode_t mode,
  * @return `ESP_OK` on success
  */
 esp_err_t mcp9808_get_alert_config(i2c_dev_t *dev, mcp9808_alert_mode_t *mode,
-        mcp9808_alert_select_t *sel, mcp9808_alert_polarity_t *polarity, mcp9808_hysteresis_t *hyst);
+                                   mcp9808_alert_select_t *sel, mcp9808_alert_polarity_t *polarity, mcp9808_hysteresis_t *hyst);
 
 /**
  * @brief Set alert temperature limits

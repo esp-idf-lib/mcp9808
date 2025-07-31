@@ -201,7 +201,7 @@ esp_err_t mcp9808_set_mode(i2c_dev_t *dev, mcp9808_mode_t mode)
     CHECK_ARG(dev);
 
     return update_reg_16(dev, REG_CONFIG, ~BV(BIT_CONFIG_SHDN),
-            mode == MCP9808_SHUTDOWN ? BV(BIT_CONFIG_SHDN) : 0);
+                         mode == MCP9808_SHUTDOWN ? BV(BIT_CONFIG_SHDN) : 0);
 }
 
 esp_err_t mcp9808_get_mode(i2c_dev_t *dev, mcp9808_mode_t *mode)
@@ -230,7 +230,7 @@ esp_err_t mcp9808_get_resolution(i2c_dev_t *dev, mcp9808_resolution_t *res)
 }
 
 esp_err_t mcp9808_set_alert_config(i2c_dev_t *dev, mcp9808_alert_mode_t mode,
-        mcp9808_alert_select_t sel, mcp9808_alert_polarity_t polarity, mcp9808_hysteresis_t hyst)
+                                   mcp9808_alert_select_t sel, mcp9808_alert_polarity_t polarity, mcp9808_hysteresis_t hyst)
 {
     CHECK_ARG(dev);
 
@@ -238,18 +238,18 @@ esp_err_t mcp9808_set_alert_config(i2c_dev_t *dev, mcp9808_alert_mode_t mode,
         return update_reg_16(dev, REG_CONFIG, ~BV(BIT_CONFIG_ALERT_CTRL), 0);
 
     uint16_t mask = ~(BV(BIT_CONFIG_ALERT_CTRL) | BV(BIT_CONFIG_ALERT_SEL)
-            | BV(BIT_CONFIG_ALERT_MODE) | BV(BIT_CONFIG_ALERT_POL) | (3 << BIT_CONFIG_HYST));
+                      | BV(BIT_CONFIG_ALERT_MODE) | BV(BIT_CONFIG_ALERT_POL) | (3 << BIT_CONFIG_HYST));
 
     return update_reg_16(dev, REG_CONFIG, mask,
-            BV(BIT_CONFIG_ALERT_CTRL)
-            | (mode == MCP9808_ALERT_COMPARATOR ? 0 : BV(BIT_CONFIG_ALERT_MODE))
-            | ((sel & 1) << BIT_CONFIG_ALERT_SEL)
-            | ((polarity & 1) << BIT_CONFIG_ALERT_POL)
-            | ((hyst & 3) << BIT_CONFIG_HYST));
+                         BV(BIT_CONFIG_ALERT_CTRL)
+                         | (mode == MCP9808_ALERT_COMPARATOR ? 0 : BV(BIT_CONFIG_ALERT_MODE))
+                         | ((sel & 1) << BIT_CONFIG_ALERT_SEL)
+                         | ((polarity & 1) << BIT_CONFIG_ALERT_POL)
+                         | ((hyst & 3) << BIT_CONFIG_HYST));
 }
 
 esp_err_t mcp9808_get_alert_config(i2c_dev_t *dev, mcp9808_alert_mode_t *mode,
-        mcp9808_alert_select_t *sel, mcp9808_alert_polarity_t *polarity, mcp9808_hysteresis_t *hyst)
+                                   mcp9808_alert_select_t *sel, mcp9808_alert_polarity_t *polarity, mcp9808_hysteresis_t *hyst)
 {
     CHECK_ARG(dev && mode && sel && polarity && hyst);
 
@@ -294,7 +294,7 @@ esp_err_t mcp9808_set_alert_status(i2c_dev_t *dev, bool alert)
     CHECK_ARG(dev);
 
     return update_reg_16(dev, REG_CONFIG, ~BV(BIT_CONFIG_ALERT_STAT),
-            alert ? BV(BIT_CONFIG_ALERT_STAT) : 0);
+                         alert ? BV(BIT_CONFIG_ALERT_STAT) : 0);
 }
 
 esp_err_t mcp9808_get_alert_status(i2c_dev_t *dev, bool *alert)
